@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">TeeCard</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="choose_color">\ue604</string>
+    <string name="choose_image">\ue602</string>
+    <string name="choose_design">\ue600</string>
+    <string name="choose_effects">\ue601</string>
+    <string name="share_image">\ue603</string>
+
+</resources>

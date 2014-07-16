@@ -1,0 +1,81 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.pulp.teeapp.ui.MainActivity"
+    tools:ignore="MergeRootFrame" >
+
+    <android.support.v4.view.ViewPager
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/pager"
+        android:layout_width="wrap_content"
+        android:layout_height="200dp"
+        android:layout_above="@+id/buttonLayout"
+        android:layout_alignParentTop="true" />
+
+    <LinearLayout
+        android:id="@+id/buttonLayout"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/chooseColor"
+            android:layout_width="wrap_content"
+            android:layout_height="70dp"
+            android:layout_weight="0.20"
+            android:background="#c6c6c6"
+            android:gravity="center"
+            android:text="@string/choose_color"
+            android:textSize="@dimen/icon_size" />
+
+        <TextView
+            android:id="@+id/chooseDesign"
+            android:layout_width="wrap_content"
+            android:layout_height="70dp"
+            android:layout_weight="0.20"
+            android:background="@color/DesignOrange"
+            android:gravity="center"
+            android:text="@string/choose_design"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/icon_size" />
+
+        <TextView
+            android:id="@+id/chooseImage"
+            android:layout_width="wrap_content"
+            android:layout_height="70dp"
+            android:layout_weight="0.20"
+            android:background="@color/ImageBlue"
+            android:gravity="center"
+            android:text="@string/choose_image"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/icon_size" />
+
+        <TextView
+            android:id="@+id/chooseEffects"
+            android:layout_width="wrap_content"
+            android:layout_height="70dp"
+            android:layout_weight="0.20"
+            android:background="@color/EffectsPurple"
+            android:gravity="center"
+            android:text="@string/choose_effects"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/icon_size" />
+
+        <TextView
+            android:id="@+id/shareImage"
+            android:layout_width="wrap_content"
+            android:layout_height="70dp"
+            android:layout_weight="0.20"
+            android:background="@color/ShareGreen"
+            android:gravity="center"
+            android:text="@string/share_image"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/icon_size" />
+    </LinearLayout>
+
+</RelativeLayout>
