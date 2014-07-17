@@ -1,21 +1,26 @@
 package com.pulp.teeapp.ui;
 
-import android.graphics.Typeface;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.graphics.Point;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarActivity;
+import android.view.Display;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.TextView;
 
 import com.example.teecard.R;
 import com.pulp.teeapp.controllers.ScreenPagerAdapter;
 
-public class MainActivity extends ActionBarActivity {
+
+public class MainActivity extends ActionBarActivity  {
 
 	private ViewPager cardSelector;
-	private ScreenPagerAdapter mPagerAdapter;
-	private Typeface icomoon;
+	public static  ScreenPagerAdapter mPagerAdapter;
+
+	SharedPreferences preferences;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -24,18 +29,19 @@ public class MainActivity extends ActionBarActivity {
 		cardSelector = (ViewPager) findViewById(R.id.pager);
 		mPagerAdapter = new ScreenPagerAdapter(getSupportFragmentManager());
 		cardSelector.setAdapter(mPagerAdapter);
+		mPagerAdapter.notifyDataSetChanged();
 		
-		TextView chooseColor=(TextView) findViewById(R.id.chooseColor);
-		TextView chooseDesign=(TextView) findViewById(R.id.chooseDesign);
-		TextView chooseImage=(TextView) findViewById(R.id.chooseImage);
-		TextView chooseEffects=(TextView) findViewById(R.id.chooseEffects);
-		TextView shareImage=(TextView) findViewById(R.id.shareImage);
-		icomoon  = Typeface.createFromAsset(this.getAssets(), "icomoon.ttf");
-		chooseColor.setTypeface(icomoon);
-		chooseDesign.setTypeface(icomoon);
-		chooseImage.setTypeface(icomoon);
-		chooseEffects.setTypeface(icomoon);
-		shareImage.setTypeface(icomoon);
+		
+		
+
+		if (savedInstanceState == null) {
+			getSupportFragmentManager().beginTransaction()
+					.add(R.id.buttonLayout, new ButtonFragment()).commit();
+		}
+
+		preferences = this.getSharedPreferences("ScreenActive",
+				Context.MODE_PRIVATE);
+
 	}
 
 	@Override
