@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/buttonContainer"
+    android:layout_width="70dp"
+    android:layout_height="match_parent"
+    android:background="@color/ShareGreen"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/chooseColor"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.20"
+        android:background="@color/GreyPicker"
+        android:gravity="center"
+        android:text="@string/choose_color"
+        android:textSize="@dimen/icon_size" />
+
+    <TextView
+        android:id="@+id/chooseDesign"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.20"
+        android:background="@color/DesignOrange"
+        android:gravity="center"
+        android:text="@string/choose_design"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/icon_size" />
+
+    <TextView
+        android:id="@+id/chooseImage"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.20"
+        android:background="@color/ImageBlue"
+        android:gravity="center"
+        android:text="@string/choose_image"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/icon_size" />
+
+    <TextView
+        android:id="@+id/chooseEffects"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.20"
+        android:background="@color/EffectsPurple"
+        android:gravity="center"
+        android:text="@string/choose_effects"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/icon_size" />
+
+    <TextView
+        android:id="@+id/shareImage"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.20"
+        android:background="@color/ShareGreen"
+        android:gravity="center"
+        android:text="@string/share_image"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/icon_size" />
+
+</LinearLayout>

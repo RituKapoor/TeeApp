@@ -4,4 +4,6 @@ public class ConstantsUtils {
 
 	public static final int NO_OF_FRAGMENTS = 8;
 	public static final int NO_OF_TSHIRTS = 4;
+	public  static int CURRENT_FRAGMENT;
 }
+
