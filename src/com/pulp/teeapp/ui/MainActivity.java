@@ -2,16 +2,18 @@ package com.pulp.teeapp.ui;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.graphics.Point;
+
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarActivity;
-import android.view.Display;
+
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.example.teecard.R;
+import com.pulp.teeapp.*;
 import com.pulp.teeapp.controllers.ScreenPagerAdapter;
+import com.pulp.teeapp.utils.ConstantsUtils;
+import com.pulp.teeapp.utils.ConstantsUtils.CurrentScreenChoice;;
 
 
 public class MainActivity extends ActionBarActivity  {
@@ -25,6 +27,8 @@ public class MainActivity extends ActionBarActivity  {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		
+		ConstantsUtils.CURRENT_CHOICE=CurrentScreenChoice.CHOOSE_COLOR;
 
 		cardSelector = (ViewPager) findViewById(R.id.pager);
 		mPagerAdapter = new ScreenPagerAdapter(getSupportFragmentManager());

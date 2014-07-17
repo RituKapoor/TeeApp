@@ -1,15 +1,14 @@
 package com.pulp.teeapp.controllers;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
-import com.pulp.teeapp.ui.MainActivity;
-import com.example.teecard.R;
+import com.pulp.teeapp.*;
 import com.pulp.teeapp.ui.TeeTypeFragment;
 import com.pulp.teeapp.utils.ConstantsUtils;
+import com.pulp.teeapp.utils.ConstantsUtils.CurrentScreenChoice;
 
 public class ScreenPagerAdapter extends FragmentStatePagerAdapter {
 
@@ -23,27 +22,29 @@ public class ScreenPagerAdapter extends FragmentStatePagerAdapter {
 
 		Bundle mTshirt = new Bundle();
 		TeeTypeFragment teeType = new TeeTypeFragment();
-		switch (index) {
-		case 0:
-			mTshirt.putInt("mTshirt", R.drawable.tshirtblack3);
+		
+		switch (index) 
+		{
+		case 0: // TShirt in 1st Fragment
+			mTshirt.putInt("mTshirt", R.drawable.tshirtred);
 			break;
-		case 1:
-			mTshirt.putInt("mTshirt", R.drawable.tshirtred3);
+		case 1:  // TShirt in 2nd Fragment
+			mTshirt.putInt("mTshirt", R.drawable.tshirtblack);
 			break;
-		case 2:
-			mTshirt.putInt("mTshirt", R.drawable.tshirtblue3);
+		case 2: // TShirt in 3rd Fragment
+			mTshirt.putInt("mTshirt", R.drawable.tshirtblue);
 			break;
-		case 3:
-			mTshirt.putInt("mTshirt", R.drawable.tshirtwhite3);
+		case 3: // TShirt in 4th Fragment
+			mTshirt.putInt("mTshirt", R.drawable.tshirtwhite);
 			break;
-		case 4:
-			mTshirt.putInt("mTshirt", R.drawable.tshirtwhite3);
+		case 4: // TShirt in 5th Fragment
+			mTshirt.putInt("mTshirt", R.drawable.tshirtblack);
 			break;
-		case 5:
-			mTshirt.putInt("mTshirt", R.drawable.tshirtwhite3);
+		case 5: // TShirt in 6th Fragment
+			mTshirt.putInt("mTshirt", R.drawable.tshirtblack);
 			break;
 		default:
-			mTshirt.putInt("mTshirt", R.drawable.tshirtwhite3);
+			mTshirt.putInt("mTshirt", R.drawable.tshirtred);
 			break;
 		}
 
@@ -54,21 +55,25 @@ public class ScreenPagerAdapter extends FragmentStatePagerAdapter {
 
 	@Override
 	public int getCount() {
-		switch (ConstantsUtils.CURRENT_FRAGMENT) {
-		case 0:
-
-			return ConstantsUtils.NO_OF_TSHIRTS;
-		case 1:
-
-			return ConstantsUtils.NO_OF_FRAGMENTS;
-
-		case 2:
 		
-
-			return ConstantsUtils.NO_OF_FRAGMENTS;
+		// This API returns the number of fragments to be created based on the Button clicked.	
+		switch (ConstantsUtils.CURRENT_CHOICE)
+		{		
+		case CHOOSE_COLOR:
+			return ConstantsUtils.TSHIRTS_COLORS_CNT;
+		case CHOOSE_FRAME:
+			return ConstantsUtils.NO_OF_FRAMES;
+		case CHOOSE_IMAGE:
+			return 1;
+			
+		case CHOOSE_EFFECT:
+			return ConstantsUtils.NO_OF_EFFECTS;
 		default:
 			notifyDataSetChanged();
-			return ConstantsUtils.NO_OF_FRAGMENTS;
+			return 1;
 		}
 	}
+	
+	
+
 }

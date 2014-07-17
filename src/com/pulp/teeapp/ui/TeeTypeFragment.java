@@ -17,7 +17,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 
-import com.example.teecard.R;
+import com.pulp.teeapp.*;
+
 
 public class TeeTypeFragment extends Fragment {
 	private CardView cardView;
@@ -52,26 +53,30 @@ public class TeeTypeFragment extends Fragment {
 		int height = size.y;
 		
 
+		// Load the card on the Fragment and set background as the tshirt
 		if (getArguments() != null)
-
 		{
 			Bundle Tshirt = getArguments();
-		Card card = new Card(getActivity());
-		card.setBackgroundResourceId(Tshirt.getInt("mTshirt"));
-		cardView = (CardView) rootView.findViewById(R.id.carddemo);
-		cardView.setCard(card);
-	}
-if(width>height){
+			Card card = new Card(getActivity());
+			card.setBackgroundResourceId(Tshirt.getInt("mTshirt"));
+			cardView = (CardView) rootView.findViewById(R.id.card);
+			cardView.setCard(card);
+		}
+		
+		if(width>height)
+		{
 		android.view.ViewGroup.LayoutParams params=  cardView.getLayoutParams();
 		params.height=(int) height;
 		params.width= (int) ((height/1.340));
 		Log.e("params landscape",""+ params.height+params.width);
-}else{
-	android.view.ViewGroup.LayoutParams params=  cardView.getLayoutParams();
-	params.height=(int) (width*1.340);
-	params.width= (int) width;
-	Log.e("params potrait",""+ params.height+params.width);
-}
+		}
+		else
+		{
+		android.view.ViewGroup.LayoutParams params=  cardView.getLayoutParams();
+		params.height=(int) (width*1.340);
+		params.width= (int) width;
+		Log.e("params potrait",""+ params.height+params.width);
+		}
 		return rootView;
 	}
 }

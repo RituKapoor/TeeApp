@@ -1,7 +1,11 @@
 package com.pulp.teeapp.ui;
 
 import android.content.Context;
+import android.content.Intent;
+
+import com.pulp.teeapp.utils.ConstantsUtils.CurrentScreenChoice;
 import android.graphics.Typeface;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -12,7 +16,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.teecard.R;
+import com.pulp.teeapp.*;
 import com.pulp.teeapp.controllers.ScreenPagerAdapter;
 import com.pulp.teeapp.utils.ConstantsUtils;
 
@@ -26,7 +30,7 @@ public class ButtonFragment extends Fragment implements OnClickListener {
 	private TextView chooseImage;
 	private FragmentActivity mActivity;
 	private Context mContext;
-	 ScreenPagerAdapter mPagerAdapter;
+	ScreenPagerAdapter mPagerAdapter;
 	
 	
 
@@ -60,32 +64,75 @@ public class ButtonFragment extends Fragment implements OnClickListener {
 		chooseDesign.setOnClickListener(this);
 		chooseEffects.setOnClickListener(this);
 
+		
+		
+		
+		final int ACTIVITY_SELECT_IMAGE = 1234;
+		((TextView) view.findViewById(R.id.chooseImage))
+        .setOnClickListener(new OnClickListener() {
+            public void onClick(View arg0) {
+                Intent intent = new Intent();
+                intent.setType("image/*");
+                intent.setAction(Intent.ACTION_GET_CONTENT);
+                startActivityForResult(Intent.createChooser(intent,"Select Picture"), ACTIVITY_SELECT_IMAGE);
+            }
+        });
+		
+
 		return view;
 	}
 
+	
+	
+	
 	@Override
 	public void onClick(View v) {
+		
+		CurrentScreenChoice screenChoice = null;
+		
 		switch (v.getId()) {
 		case R.id.chooseColor:
 			Toast.makeText(mContext, "Choose Color", Toast.LENGTH_LONG).show();
-			ConstantsUtils.CURRENT_FRAGMENT = 0;
+			ConstantsUtils.CURRENT_CHOICE =screenChoice.CHOOSE_COLOR;
 			MainActivity.mPagerAdapter.notifyDataSetChanged();
 			break;
 
 		case R.id.chooseDesign:
 			Toast.makeText(mContext, "Choose Design", Toast.LENGTH_LONG).show();
 
-			ConstantsUtils.CURRENT_FRAGMENT = 1;
+			ConstantsUtils.CURRENT_CHOICE = screenChoice.CHOOSE_FRAME;
 			MainActivity.mPagerAdapter.notifyDataSetChanged();
 			break;
 		case R.id.chooseEffects:
 
 			Toast.makeText(mContext, "Choose Effects", Toast.LENGTH_LONG)
 					.show();
-			ConstantsUtils.CURRENT_FRAGMENT = 2;
+			ConstantsUtils.CURRENT_CHOICE =screenChoice.CHOOSE_EFFECT;
 			MainActivity.mPagerAdapter.notifyDataSetChanged();
 			break;
 
+		case R.id.chooseImage:
+
+			Toast.makeText(mContext, "Choose Image", Toast.LENGTH_LONG)
+					.show();
+			ConstantsUtils.CURRENT_CHOICE =screenChoice.CHOOSE_IMAGE;
+			MainActivity.mPagerAdapter.notifyDataSetChanged();
+
+	        Intent i = new Intent(Intent.ACTION_PICK,
+	                   android.provider.MediaStore.Images.Media.INTERNAL_CONTENT_URI);
+	        final int ACTIVITY_SELECT_IMAGE = 1234;
+	        startActivityForResult(i, ACTIVITY_SELECT_IMAGE); 
+			   
+			break;
+			
+		case R.id.shareImage:
+
+			Toast.makeText(mContext, "Share Image", Toast.LENGTH_LONG)
+					.show();
+			ConstantsUtils.CURRENT_CHOICE =screenChoice.CHOOSE_SHARE;
+			MainActivity.mPagerAdapter.notifyDataSetChanged();
+			break;
+			
 		}
 
 	}
